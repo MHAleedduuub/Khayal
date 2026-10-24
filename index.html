@@ -4,144 +4,216 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10152b">
-  <title>خيال | صانع الهويات الخيالية</title>
+  <meta name="theme-color" content="#17152d">
+  <title>Khayal Studio | خيال</title>
   <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
-
-<header class="topbar">
-  <div class="logo">خَيال <small>بطاقات خيالية</small></div>
-  <span class="privacy">🔒 بياناتك على جهازك</span>
-</header>
-
-<main class="container">
-  <section class="intro">
-    <p class="tag">✦ اصنع شخصيتك</p>
-    <h1>هويتك الخيالية،<br><span>على ذوقك.</span></h1>
-    <p>صمم بطاقة شخصية خيالية بصورتك وبياناتك، ثم حمّلها كصورة.</p>
-  </section>
-
-  <section class="panel">
-    <h2>01 — بيانات الشخصية</h2>
-
-    <label class="upload">
-      <span>📷 اختار صورة الشخصية</span>
-      <input id="photo" type="file" accept="image/*">
-    </label>
-
-    <label>الاسم الكامل
-      <input id="name" placeholder="مثال: ليان أحمد" maxlength="48">
-    </label>
-
-    <label>اللقب
-      <input id="nickname" placeholder="ظل القمر" maxlength="24">
-    </label>
-
-    <label>تاريخ الميلاد الخيالي
-      <input id="birth" type="date">
-    </label>
-
-    <label>العالم أو الدولة الخيالية
-      <input id="country" placeholder="مملكة أوريون" maxlength="36">
-    </label>
-
-    <label>المدينة
-      <input id="city" placeholder="مدينة النور" maxlength="36">
-    </label>
-
-    <label>المهنة
-      <input id="job" placeholder="مستكشف" maxlength="32">
-    </label>
-
-    <label>النوع
-      <select id="gender">
-        <option>غير محدد</option>
-        <option>ذكر</option>
-        <option>أنثى</option>
-        <option>شخصية خيالية</option>
-      </select>
-    </label>
-
-    <label>نبذة عن الشخصية
-      <textarea id="bio" maxlength="110" placeholder="اكتب وصف شخصيتك..."></textarea>
-    </label>
-
-    <div class="actions">
-      <button type="button" id="random">✦ بيانات عشوائية</button>
-      <button type="button" id="clear" class="secondary">مسح البيانات</button>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">K</span>
+      <span>Khayal <small>Studio</small></span>
+    </a>
+    <div class="header-actions">
+      <button id="languageBtn" class="icon-btn" type="button">EN</button>
+      <button id="themeBtn" class="icon-btn" type="button" aria-label="Change theme">☀️</button>
     </div>
-  </section>
+  </header>
 
-  <section class="preview-section">
-    <h2>02 — معاينة البطاقة</h2>
+  <main class="container">
+    <section class="hero">
+      <span class="eyebrow" data-i18n="eyebrow">مساحتك لصناعة الخيال</span>
+      <h1 data-i18n="title">اصنع شخصيتك الخيالية</h1>
+      <p data-i18n="subtitle">صمّم شخصية، أضف صورتها، واحفظ بطاقتها أو نزّلها كصورة.</p>
+    </section>
 
-    <article class="id-card" id="card">
-      <div class="card-header">
-        <div class="card-logo">خَيال</div>
-        <span>FANTASY PROFILE</span>
+    <section class="settings panel">
+      <div>
+        <span class="section-kicker" data-i18n="preferences">التفضيلات</span>
+        <h2 data-i18n="appearance">المظهر واللغة</h2>
       </div>
+      <div class="settings-controls">
+        <label class="setting-label" for="languageSelect" data-i18n="language">اللغة</label>
+        <select id="languageSelect">
+          <option value="ar">العربية</option>
+          <option value="en">English</option>
+        </select>
+        <label class="setting-label" for="themeSelect" data-i18n="theme">الثيم</label>
+        <select id="themeSelect">
+          <option value="dark" data-i18n="dark">داكن</option>
+          <option value="light" data-i18n="light">فاتح</option>
+        </select>
+      </div>
+    </section>
 
-      <div class="card-label">بطاقة شخصية خيالية</div>
-
-      <div class="card-content">
-        <div class="portrait">
-          <img id="previewPhoto" alt="صورة الشخصية" hidden>
-          <div id="placeholder">✧<small>صورتك هنا</small></div>
+    <div class="workspace">
+      <section class="panel editor">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker" data-i18n="step1">الخطوة الأولى</span>
+            <h2 data-i18n="details">بيانات الشخصية</h2>
+          </div>
+          <span class="heading-icon">✦</span>
         </div>
 
-        <div class="details">
-          <small>الاسم الكامل</small>
-          <h3 id="outName">اسم الشخصية</h3>
-          <p id="outNickname">لقب الشخصية</p>
+        <label for="photo" class="upload-box">
+          <span class="upload-icon">＋</span>
+          <strong data-i18n="uploadTitle">ارفع صورة الشخصية</strong>
+          <small data-i18n="uploadHint">اضغط هنا لاختيار صورة من جهازك</small>
+          <input type="file" id="photo" accept="image/*">
+        </label>
 
-          <hr>
+        <div class="form-grid">
+          <div class="field full">
+            <label for="name" data-i18n="name">الاسم الكامل</label>
+            <input id="name" type="text" maxlength="70" placeholder="مثال: آدم يوسف" data-placeholder="nameHint">
+          </div>
 
-          <small>تاريخ الميلاد</small>
-          <b id="outBirth">—</b>
+          <div class="field">
+            <label for="nickname" data-i18n="nickname">الاسم المستعار</label>
+            <input id="nickname" type="text" maxlength="50" data-placeholder="nicknameHint">
+          </div>
 
-          <small>النوع</small>
-          <b id="outGender">غير محدد</b>
+          <div class="field">
+            <label for="birth" data-i18n="birth">تاريخ الميلاد</label>
+            <input id="birth" type="text" inputmode="numeric" maxlength="20"
+              placeholder="يوم/شهر/سنة" data-placeholder="birthHint" autocomplete="off">
+          </div>
 
-          <small>العالم</small>
-          <b id="outCountry">—</b>
+          <div class="field">
+            <label for="gender" data-i18n="gender">النوع</label>
+            <select id="gender">
+              <option value="" data-i18n="choose">اختر</option>
+              <option value="ذكر" data-i18n="male">ذكر</option>
+              <option value="أنثى" data-i18n="female">أنثى</option>
+              <option value="أخرى" data-i18n="other">أخرى</option>
+            </select>
+          </div>
 
-          <small>المدينة</small>
-          <b id="outCity">—</b>
+          <div class="field">
+            <label for="country" data-i18n="country">الدولة</label>
+            <input id="country" type="text" maxlength="50" data-placeholder="countryHint">
+          </div>
 
-          <small>المهنة</small>
-          <b id="outJob">—</b>
+          <div class="field">
+            <label for="city" data-i18n="city">المدينة</label>
+            <input id="city" type="text" maxlength="50" data-placeholder="cityHint">
+          </div>
+
+          <div class="field">
+            <label for="job" data-i18n="job">المهنة</label>
+            <input id="job" type="text" maxlength="60" data-placeholder="jobHint">
+          </div>
+
+          <div class="field full">
+            <label for="bio" data-i18n="bio">نبذة عن الشخصية</label>
+            <textarea id="bio" rows="3" maxlength="350" data-placeholder="bioHint"></textarea>
+          </div>
         </div>
+
+        <div class="button-grid">
+          <button id="random" class="btn btn-secondary" type="button" data-i18n="random">✦ بيانات عشوائية</button>
+          <button id="clear" class="btn btn-ghost" type="button" data-i18n="clear">مسح الحقول</button>
+          <button id="save" class="btn btn-primary" type="button" data-i18n="save">حفظ الشخصية</button>
+          <button id="download" class="btn btn-secondary" type="button" data-i18n="download">تنزيل PNG</button>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="preview-column">
+        <div class="section-heading preview-heading">
+          <div>
+            <span class="section-kicker" data-i18n="step2">الخطوة الثانية</span>
+            <h2 data-i18n="previewTitle">معاينة البطاقة</h2>
+          </div>
+          <span class="live-dot"><span></span><span data-i18n="live">مباشر</span></span>
+        </div>
+
+        <article id="card" class="id-card">
+          <div class="card-glow"></div>
+          <div class="card-top">
+            <div>
+              <span class="card-brand">KHAYAL</span>
+              <div class="card-subtitle" data-i18n="fictionalProfile">ملف شخصية خيالية</div>
+            </div>
+            <div class="card-symbol">✧</div>
+          </div>
+
+          <div class="card-main">
+            <div class="portrait">
+              <img id="previewPhoto" alt="Character portrait" hidden>
+              <div id="placeholder">
+                <span>✦</span>
+                <small data-i18n="noPhoto">بدون صورة</small>
+              </div>
+            </div>
+
+            <div class="card-info">
+              <span class="info-label" data-i18n="fullName">الاسم الكامل</span>
+              <h3 id="outName">اسم الشخصية</h3>
+              <div class="nickname-line">
+                <span data-i18n="alias">الاسم المستعار</span>
+                <strong id="outNickname">—</strong>
+              </div>
+              <div class="info-grid">
+                <div>
+                  <span data-i18n="birth">تاريخ الميلاد</span>
+                  <strong id="outBirth">—</strong>
+                </div>
+                <div>
+                  <span data-i18n="gender">النوع</span>
+                  <strong id="outGender">—</strong>
+                </div>
+                <div>
+                  <span data-i18n="country">الدولة</span>
+                  <strong id="outCountry">—</strong>
+                </div>
+                <div>
+                  <span data-i18n="city">المدينة</span>
+                  <strong id="outCity">—</strong>
+                </div>
+                <div class="wide">
+                  <span data-i18n="job">المهنة</span>
+                  <strong id="outJob">—</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-bio">
+            <span data-i18n="bio">نبذة عن الشخصية</span>
+            <p id="outBio">اكتب نبذة عن الشخصية الخيالية...</p>
+          </div>
+
+          <div class="card-footer">
+            <span id="outNumber">FIC-00000000</span>
+            <span class="fiction-mark" data-i18n="fictionNotice">غير رسمية — للترفيه فقط</span>
+          </div>
+        </article>
+
+        <div class="preview-note">
+          <span>ⓘ</span>
+          <p data-i18n="previewNote">هذه بطاقة ترفيهية لشخصية خيالية، وليست وثيقة إثبات هوية.</p>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel saved-section">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker" data-i18n="yourCollection">مجموعتك</span>
+          <h2 data-i18n="savedTitle">الشخصيات المحفوظة</h2>
+        </div>
+        <span id="savedCount" class="count-badge">0</span>
       </div>
+      <div id="saved" class="saved-grid"></div>
+    </section>
 
-      <div class="card-footer">
-        <span>رقم خيالي: <b id="outNumber">FAN-000000</b></span>
-      </div>
-
-      <div class="warning">غير رسمية — للترفيه فقط</div>
-    </article>
-
-    <div class="bio-box">
-      <b>نبذة الشخصية</b>
-      <p id="outBio">هنا هتظهر نبذة الشخصية.</p>
-    </div>
-
-    <div class="actions">
-      <button type="button" id="download">⬇ تحميل PNG</button>
-      <button type="button" id="save" class="secondary">حفظ البطاقة</button>
-    </div>
-  </section>
-
-  <section class="panel">
-    <h2>03 — بطاقاتي المحفوظة</h2>
-    <div id="saved">
-      <p class="empty">لسه مفيش بطاقات محفوظة.</p>
-    </div>
-  </section>
-</main>
-
-<footer>خيال © 2026 — بطاقات خيالية للترفيه فقط</footer>
-
-<script src="app.js"></script>
+    <footer>
+      <div class="footer-logo">Khayal Studio ✦</div>
+      <p data-i18n="footerNotice">مشروع ترفيهي لإنشاء شخصيات خيالية. لا تستخدم البطاقات لانتحال الهوية.</p>
+    </footer>
+  </main>
 </body>
 </html>
