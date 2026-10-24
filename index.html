@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10152b">
+  <title>خيال | صانع الهويات الخيالية</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo">خَيال <small>بطاقات خيالية</small></div>
+  <span class="privacy">🔒 بياناتك على جهازك</span>
+</header>
+
+<main class="container">
+  <section class="intro">
+    <p class="tag">✦ اصنع شخصيتك</p>
+    <h1>هويتك الخيالية،<br><span>على ذوقك.</span></h1>
+    <p>صمم بطاقة شخصية خيالية بصورتك وبياناتك، ثم حمّلها كصورة.</p>
+  </section>
+
+  <section class="panel">
+    <h2>01 — بيانات الشخصية</h2>
+
+    <label class="upload">
+      <span>📷 اختار صورة الشخصية</span>
+      <input id="photo" type="file" accept="image/*">
+    </label>
+
+    <label>الاسم الكامل
+      <input id="name" placeholder="مثال: ليان أحمد" maxlength="48">
+    </label>
+
+    <label>اللقب
+      <input id="nickname" placeholder="ظل القمر" maxlength="24">
+    </label>
+
+    <label>تاريخ الميلاد الخيالي
+      <input id="birth" type="date">
+    </label>
+
+    <label>العالم أو الدولة الخيالية
+      <input id="country" placeholder="مملكة أوريون" maxlength="36">
+    </label>
+
+    <label>المدينة
+      <input id="city" placeholder="مدينة النور" maxlength="36">
+    </label>
+
+    <label>المهنة
+      <input id="job" placeholder="مستكشف" maxlength="32">
+    </label>
+
+    <label>النوع
+      <select id="gender">
+        <option>غير محدد</option>
+        <option>ذكر</option>
+        <option>أنثى</option>
+        <option>شخصية خيالية</option>
+      </select>
+    </label>
+
+    <label>نبذة عن الشخصية
+      <textarea id="bio" maxlength="110" placeholder="اكتب وصف شخصيتك..."></textarea>
+    </label>
+
+    <div class="actions">
+      <button type="button" id="random">✦ بيانات عشوائية</button>
+      <button type="button" id="clear" class="secondary">مسح البيانات</button>
+    </div>
+  </section>
+
+  <section class="preview-section">
+    <h2>02 — معاينة البطاقة</h2>
+
+    <article class="id-card" id="card">
+      <div class="card-header">
+        <div class="card-logo">خَيال</div>
+        <span>FANTASY PROFILE</span>
+      </div>
+
+      <div class="card-label">بطاقة شخصية خيالية</div>
+
+      <div class="card-content">
+        <div class="portrait">
+          <img id="previewPhoto" alt="صورة الشخصية" hidden>
+          <div id="placeholder">✧<small>صورتك هنا</small></div>
+        </div>
+
+        <div class="details">
+          <small>الاسم الكامل</small>
+          <h3 id="outName">اسم الشخصية</h3>
+          <p id="outNickname">لقب الشخصية</p>
+
+          <hr>
+
+          <small>تاريخ الميلاد</small>
+          <b id="outBirth">—</b>
+
+          <small>النوع</small>
+          <b id="outGender">غير محدد</b>
+
+          <small>العالم</small>
+          <b id="outCountry">—</b>
+
+          <small>المدينة</small>
+          <b id="outCity">—</b>
+
+          <small>المهنة</small>
+          <b id="outJob">—</b>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <span>رقم خيالي: <b id="outNumber">FAN-000000</b></span>
+      </div>
+
+      <div class="warning">غير رسمية — للترفيه فقط</div>
+    </article>
+
+    <div class="bio-box">
+      <b>نبذة الشخصية</b>
+      <p id="outBio">هنا هتظهر نبذة الشخصية.</p>
+    </div>
+
+    <div class="actions">
+      <button type="button" id="download">⬇ تحميل PNG</button>
+      <button type="button" id="save" class="secondary">حفظ البطاقة</button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>03 — بطاقاتي المحفوظة</h2>
+    <div id="saved">
+      <p class="empty">لسه مفيش بطاقات محفوظة.</p>
+    </div>
+  </section>
+</main>
+
+<footer>خيال © 2026 — بطاقات خيالية للترفيه فقط</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
